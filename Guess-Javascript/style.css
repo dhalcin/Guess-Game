@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00010f;
+    color: wheat;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+}
+
+p {
+    text-align: center;
+    font-size: 50px;
+    color: wheat;
+}
+
+.review > p {
+    font-size: 40px;
+    color: red;
+}
+
+.user_Container {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+}
+input {
+    text-align: center;
+    padding: 6px;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
+    outline: none;
+    box-shadow: 2px 2px 25px rgba(200, 2, 0, 1);
+}
+
+button {
+    text-align: center;
+    border-radius: 5px;
+    border: transparent;
+    font-family: 'Caprasimo', cursive;
+    font-size: 18px;
+}
+
+#Play {
+    width: 60px;
+}
+
+#Reset {
+    width: 60px;
+}
+
+#Play:hover {
+    background: #c31432;
+}
+
+#Reset:hover {
+    background: #4a00e0;
+}
+
+input:focus {
+    font-weight: 550;
+}
