@@ -24,6 +24,11 @@ p {
     text-align: center;
     font-size: 50px;
     color: wheat;
+    transition: color 0.5s linear 0.2s;
+}
+
+p:hover {
+    color: red;
 }
 
 .review > p {
@@ -54,11 +59,7 @@ button {
     font-size: 18px;
 }
 
-#Play {
-    width: 60px;
-}
-
-#Reset {
+#Play, #Reset {
     width: 60px;
 }
 
@@ -73,3 +74,4 @@ button {
 input:focus {
     font-weight: 550;
 }
+
