@@ -1,38 +1,75 @@
+let computerNumber = 0;
 let count = 0;
-let numberComputer;
 
-function Computer() {
-    numberComputer = Math.floor(Math.random() * 10);
+function getNumber() {
+    computerNumber += Math.floor(Math.random() * 10) + 1;
 }
 
-function playGame() {
-    const userInput = parseInt(document.querySelector('#user').value);
-    Computer();
+const userInput = document.getElementById('NumberUser');
+const buttonPlay = document.getElementById('Play');
+const buttonReset = document.getElementById('Reset');
+const divResult = document.getElementById('result');
+const countPar = document.createElement('p');
 
-    if (isNaN(userInput) || userInput < 1 || userInput > 10) {
-
-        alert("!Error enter a valid data");
-        
-    }else {
-
-        if (userInput == numberComputer) {
-            document.querySelector('.review').innerHTML = '!Congratulations you guessed the number';
-            document.querySelector('.count').innerHTML = `You got it right on try number : ${count}`;
-            document.querySelector('.Computer').innerHTML = numberComputer;
-
-        } else {
-            count++;
-            document.querySelector('.count').innerHTML = `Attempt number : ${count}`;
-            document.querySelector('.review').innerHTML = `${userInput} is not the number try again`;
-        }
-        
-    }
-}
+getNumber();
 
 function resetGame() {
+    console.log("primera llamada a la funcion : " + computerNumber);
+    userInput.value = '';
+    computerNumber = 0;
+    console.log("se cambia el valor a cero : " + computerNumber);
+    getNumber();
+    console.log("el ultimo numero es : " + computerNumber);
     count = 0;
-    document.querySelector('.Computer').innerHTML = '?';
-    document.querySelector('.review').innerHTML = '';
-    document.querySelector('#user').value = '';
-    document.querySelector('.count').innerHTML ='';
+    divResult.childNodes.forEach(element => {
+        console.log(element);
+        divResult.removeChild(element);
+    
+    })
 }
+
+function game() {
+    const userNumber = userInput.value;
+    console.log(computerNumber);
+    if (isNaN(userNumber) || userNumber < 1 || userNumber > 10 || userNumber%1 !== 0) {
+        alert("Error ingresa un valor correcto");
+        userInput.value = '';
+
+    } else {
+        count++;
+        if (computerNumber == userNumber) {
+            countPar.textContent = `Adivinaste el numero en tu intento ${count}`;
+            countPar.setAttribute('id', `int${count}`);
+            divResult.appendChild(countPar);
+
+            userInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') resetGame();
+            });
+
+            buttonPlay.addEventListener('click', ()=> {
+                resetGame();
+            });
+            
+
+        } else {
+            countPar.textContent = `Intento : ${count}`;
+            countPar.setAttribute('id', `int${count}`);
+            divResult.appendChild(countPar);
+            if (count === 3) {
+                countPar.textContent = '!Perdiste';
+                countPar.setAttribute('id', `int${count}`);
+                divResult.appendChild(countPar);
+                resetGame();
+            }
+        }
+    }
+
+}
+
+userInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') game();
+});
+
+buttonPlay.addEventListener('click', ()=> game());
+
+buttonReset.addEventListener('click', ()=> resetGame());
