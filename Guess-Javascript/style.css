@@ -70,12 +70,16 @@ header {
     color: red;
 }
 
-#won  {
+#int1  {
     color: blue;
     font-size: 40px;
 }
 
-#lost {
+#int2 {
+    font-size: 40px;
+}
+
+#int3 {
     color: red;
     font-size: 40px;
 }

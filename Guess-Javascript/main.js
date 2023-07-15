@@ -1,5 +1,6 @@
 let computerNumber = 0;
 let count = 0;
+let guessd = false;
 
 function getNumber() {
     computerNumber += Math.floor(Math.random() * 10) + 1;
@@ -14,21 +15,19 @@ const countPar = document.createElement('p');
 getNumber();
 
 function resetGame() {
-    console.log("primera llamada a la funcion : " + computerNumber);
     userInput.value = '';
     computerNumber = 0;
-    console.log("se cambia el valor a cero : " + computerNumber);
+    guessd = false;
     getNumber();
-    console.log("el ultimo numero es : " + computerNumber);
     count = 0;
-    divResult.childNodes.forEach(element => {
-        console.log(element);
-        divResult.removeChild(element);
-    
-    })
+    divResult.innerHTML = '';
 }
 
 function game() {
+    if (guessd) {
+        resetGame();
+        return;
+    }
     const userNumber = userInput.value;
     console.log(computerNumber);
     if (isNaN(userNumber) || userNumber < 1 || userNumber > 10 || userNumber%1 !== 0) {
@@ -41,25 +40,18 @@ function game() {
             countPar.textContent = `Adivinaste el numero en tu intento ${count}`;
             countPar.setAttribute('id', `int${count}`);
             divResult.appendChild(countPar);
-
-            userInput.addEventListener('keyup', (event) => {
-                if (event.key === 'Enter') resetGame();
-            });
-
-            buttonPlay.addEventListener('click', ()=> {
-                resetGame();
-            });
-            
+            guessd = true;
 
         } else {
             countPar.textContent = `Intento : ${count}`;
             countPar.setAttribute('id', `int${count}`);
             divResult.appendChild(countPar);
+
             if (count === 3) {
                 countPar.textContent = '!Perdiste';
                 countPar.setAttribute('id', `int${count}`);
                 divResult.appendChild(countPar);
-                resetGame();
+                guessd = true;
             }
         }
     }
