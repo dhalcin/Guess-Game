@@ -25,6 +25,17 @@ function resetGame() {
     reveal.innerHTML = '?';
 }
 
+function shotsWin(num) {
+    countPar.setAttribute('id', `win${num}`);
+    divResult.appendChild(countPar);
+    reveal.innerHTML = computerNumber;
+}
+
+function shotsLose(num) {
+    countPar.setAttribute('id', `lose${num}`);
+    divResult.appendChild(countPar);
+}
+
 function game() {
     if (guessd) {
         resetGame();
@@ -38,20 +49,15 @@ function game() {
 
     } else {
         count++;
-        //shotsNumbers(count);
         if (computerNumber == userNumber) {
 
             if (count === 1) {
                 countPar.textContent = `Wow Adivinaste en el primer intento`;
-                countPar.setAttribute('id', `win${count}`);
-                divResult.appendChild(countPar);
-                reveal.innerHTML = computerNumber;
+                shotsWin(count);
             
             } else if (count === 2) {
                 countPar.textContent = `Vaya! Adivinaste en el segundo intento`;
-                countPar.setAttribute('id', `win${count}`);
-                divResult.appendChild(countPar);
-                reveal.innerHTML = computerNumber;
+                shotsWin(count);
             } 
             guessd = true;
 
@@ -59,18 +65,15 @@ function game() {
 
             if (count === 1) {
                 countPar.textContent = `Primer intento`;
-                countPar.setAttribute('id', `lose${count}`);
-                divResult.appendChild(countPar);
+                shotsLose(count);
             
             } else if (count === 2) {
                 countPar.textContent = 'Segundo intento';
-                countPar.setAttribute('id', `lose${count}`);
-                divResult.appendChild(countPar);
+                shotsLose(count);
             
             } else {
                 countPar.textContent = '!Perdiste';
-                countPar.setAttribute('id', `int${count}`);
-                divResult.appendChild(countPar);
+                shotsLose(count);
                 guessd = true;
             }
         }
