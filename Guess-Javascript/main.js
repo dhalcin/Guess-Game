@@ -11,7 +11,7 @@ const buttonPlay = document.getElementById('Play');
 const buttonReset = document.getElementById('Reset');
 const divResult = document.getElementById('result');
 const countPar = document.createElement('p');
-const reveal = document.getElementById('computer');
+const reveal = document.getElementById('divComputer');
 
 getNumber();
 
@@ -28,7 +28,7 @@ function resetGame() {
 function shotsWin(num) {
     countPar.setAttribute('id', `win${num}`);
     divResult.appendChild(countPar);
-    reveal.innerHTML = computerNumber;
+    reveal.innerHTML = `<p>${computerNumber}</p>`;
 }
 
 function shotsLose(num) {
