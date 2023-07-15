@@ -11,6 +11,7 @@ const buttonPlay = document.getElementById('Play');
 const buttonReset = document.getElementById('Reset');
 const divResult = document.getElementById('result');
 const countPar = document.createElement('p');
+const reveal = document.getElementById('computer');
 
 getNumber();
 
@@ -21,6 +22,7 @@ function resetGame() {
     getNumber();
     count = 0;
     divResult.innerHTML = '';
+    reveal.innerHTML = '?';
 }
 
 function game() {
@@ -36,18 +38,36 @@ function game() {
 
     } else {
         count++;
+        //shotsNumbers(count);
         if (computerNumber == userNumber) {
-            countPar.textContent = `Adivinaste el numero en tu intento ${count}`;
-            countPar.setAttribute('id', `int${count}`);
-            divResult.appendChild(countPar);
+
+            if (count === 1) {
+                countPar.textContent = `Wow Adivinaste en el primer intento`;
+                countPar.setAttribute('id', `win${count}`);
+                divResult.appendChild(countPar);
+                reveal.innerHTML = computerNumber;
+            
+            } else if (count === 2) {
+                countPar.textContent = `Vaya! Adivinaste en el segundo intento`;
+                countPar.setAttribute('id', `win${count}`);
+                divResult.appendChild(countPar);
+                reveal.innerHTML = computerNumber;
+            } 
             guessd = true;
 
         } else {
-            countPar.textContent = `Intento : ${count}`;
-            countPar.setAttribute('id', `int${count}`);
-            divResult.appendChild(countPar);
 
-            if (count === 3) {
+            if (count === 1) {
+                countPar.textContent = `Primer intento`;
+                countPar.setAttribute('id', `lose${count}`);
+                divResult.appendChild(countPar);
+            
+            } else if (count === 2) {
+                countPar.textContent = 'Segundo intento';
+                countPar.setAttribute('id', `lose${count}`);
+                divResult.appendChild(countPar);
+            
+            } else {
                 countPar.textContent = '!Perdiste';
                 countPar.setAttribute('id', `int${count}`);
                 divResult.appendChild(countPar);
