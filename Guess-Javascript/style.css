@@ -62,24 +62,40 @@ header {
     gap: 25px;
 }
 
-#numberComputer {
+#divComputer {
     font-size: 50px;
 }
 
-#numberComputer > p {
-    color: red;
+#divComputer > p {
+    color: green;
 }
 
-#int1  {
+#win1  {
     color: blue;
     font-size: 40px;
 }
 
-#int2 {
+#win2 {
+    color:  yellow;
     font-size: 40px;
 }
 
-#int3 {
+#win3 {
+    color: rebeccapurple;
+    font-size: 40px;
+}
+
+#lose1 {
+    color: pink;
+    font-size: 40px;
+}
+
+#lose2 {
+    color: purple;
+    font-size: 40px;
+}
+
+#lose3 {
     color: red;
     font-size: 40px;
 }
@@ -119,25 +135,25 @@ footer {
     justify-content: center;
 }
 
-/*#github, #twitter, #linkedin  {
-    width: 10%;
-    height: 5%;
-}*/
-
-
-#github {
+#github, #twitter, #linkedin {
     width: 75px;
     height: 70px;
     scale: .5;
 }
-
-#twitter {
-    width: 75px;
-    scale: 0.5;
+#Divalert {
+    position: relative;
+    margin-top: -650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 200px;
+    background: rgba(210, 0, 0, 0.5);
 }
 
-#linkedin {
-    width: 75px;
-    height: 70px;
-    scale: 0.5;
+#alertButton {
+    width: 100px;
+    height: 30px;
+    background: rebeccapurple;
+    color: wheat;
 }
