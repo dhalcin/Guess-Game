@@ -13,6 +13,15 @@ const divResult = document.getElementById('result');
 const countPar = document.createElement('p');
 const reveal = document.getElementById('divComputer');
 
+const divAlert = document.createElement('div');
+divAlert.id = 'Divalert';
+
+const btnAlert = document.createElement('button');
+btnAlert.textContent = 'seguir';
+btnAlert.id = 'alertButton';
+
+const selectbtn = document.getElementById('alertButton');
+
 getNumber();
 
 function resetGame() {
@@ -36,6 +45,21 @@ function shotsLose(num) {
     divResult.appendChild(countPar);
 }
 
+function customAlert() {
+    document.body.style.background = 'rgba(0, 0, 0, 0.5)';
+    document.body.appendChild(divAlert);
+    divAlert.appendChild(btnAlert);
+    
+    userInput.disabled = true;
+
+    btnAlert.addEventListener('click', ()=> {
+        document.body.removeChild(divAlert);
+        document.body.style.background = '#FFFFFF';
+    });
+
+    userInput.disabled = false;
+}
+
 function game() {
     if (guessd) {
         resetGame();
@@ -44,7 +68,8 @@ function game() {
     const userNumber = userInput.value;
     console.log(computerNumber);
     if (isNaN(userNumber) || userNumber < 1 || userNumber > 10 || userNumber%1 !== 0) {
-        alert("Error ingresa un valor correcto");
+        //alert("Error ingresa un valor correcto");
+        customAlert();
         userInput.value = '';
 
     } else {
@@ -57,6 +82,10 @@ function game() {
             
             } else if (count === 2) {
                 countPar.textContent = `Vaya! Adivinaste en el segundo intento`;
+                shotsWin(count);
+            
+            } else {
+                countPar.textContent = `Ufff! Adivinaste en el ultimo intento`;
                 shotsWin(count);
             } 
             guessd = true;
