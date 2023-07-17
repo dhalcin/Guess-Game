@@ -17,10 +17,11 @@ const divAlert = document.createElement('div');
 divAlert.id = 'Divalert';
 
 const btnAlert = document.createElement('button');
-btnAlert.textContent = 'seguir';
+btnAlert.textContent = 'OK';
 btnAlert.id = 'alertButton';
 
-const selectbtn = document.getElementById('alertButton');
+const parrAlert = document.createElement('p');
+parrAlert.textContent = 'Ingresa un valor correcto';
 
 getNumber();
 
@@ -46,8 +47,9 @@ function shotsLose(num) {
 }
 
 function customAlert() {
-    document.body.style.background = 'rgba(0, 0, 0, 0.5)';
+    document.body.style.background = '#FFFFFF';//'rgba(0, 0, 0, 0.5)'; 
     document.body.appendChild(divAlert);
+    divAlert.appendChild(parrAlert);
     divAlert.appendChild(btnAlert);
     
     userInput.disabled = true;
@@ -55,9 +57,9 @@ function customAlert() {
     btnAlert.addEventListener('click', ()=> {
         document.body.removeChild(divAlert);
         document.body.style.background = '#FFFFFF';
+        userInput.disabled = false;
+        userInput.focus();
     });
-
-    userInput.disabled = false;
 }
 
 function game() {
@@ -68,7 +70,6 @@ function game() {
     const userNumber = userInput.value;
     console.log(computerNumber);
     if (isNaN(userNumber) || userNumber < 1 || userNumber > 10 || userNumber%1 !== 0) {
-        //alert("Error ingresa un valor correcto");
         customAlert();
         userInput.value = '';
 
