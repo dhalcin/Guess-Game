@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 * {
     margin: 0px;
     padding: 0px;
@@ -9,7 +9,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Caprasimo', cursive;
+    /*font-family: 'Caprasimo', cursive;*/
+    font-family: 'Lilita One', cursive;
 }
 
 .container {
@@ -23,7 +24,7 @@ body {
 }
 
 header {
-    background: blue;
+    background: linear-gradient(to top, #4C2340, #0F1532);
     height: 10%;
     width: 100%;
 }
@@ -114,6 +115,8 @@ header {
     padding: 5px;
     outline: none;
     border-radius: 10px;
+    border: none;
+    background-color: rgba(200, 190, 200, 0.5);
 }
 
 .buttons {
@@ -122,9 +125,13 @@ header {
 }
 
 button {
+    font-weight: bold;
+    font-size: 18px;
     width: 100px;
-    height: 30px;
+    height: 35px;
     cursor: pointer;
+    border: none;
+    border-radius: 10px;
 }
 
 footer {
@@ -139,21 +146,57 @@ footer {
     width: 75px;
     height: 70px;
     scale: .5;
+    cursor: pointer;
 }
+
+#github:hover, #twitter:hover, #linkedin:hover {
+    animation: redes 0.3s linear;
+}
+
+@keyframes redes {
+    0% {
+            transform: rotate(0deg);
+    }
+    100% {
+            transform: rotate(360deg);
+    }
+}
+
+
 #Divalert {
     position: relative;
     margin-top: -650px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     width: 350px;
     height: 200px;
-    background: rgba(210, 0, 0, 0.5);
+    background: #F5F6F7;
+    border-radius: 25px;
+    animation-name: up;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes up {
+    0% {
+        scale: 0.9;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+#Divalert > p {
+    font-size: 25px;
+    color: blue;
 }
 
 #alertButton {
     width: 100px;
     height: 30px;
-    background: rebeccapurple;
+    background: red;
     color: wheat;
 }
